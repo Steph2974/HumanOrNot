@@ -1,13 +1,14 @@
 # src/dataset.py
 import pandas as pd
-from datasets import Dataset
 from PIL import Image
 import os
 import torch
 from transformers import AutoProcessor
+from datasets import Dataset
 
 def load_dataset(image_folder, csv_file, processor):
     # 读取 CSV
+    # df = pd.read_csv(csv_file).head(5)
     df = pd.read_csv(csv_file)
 
     # 加载图片
