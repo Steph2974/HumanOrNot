@@ -7,7 +7,7 @@ IMAGE_FOLDER = os.path.join(BASE_DIR, "data/images")
 CSV_FILE = os.path.join(BASE_DIR, "data/image_list.csv") 
 MODEL_CHECKPOINT = "./siglip2" # MODEL_CHECKPOINT = "google/siglip2-so400m-patch16-384"
 OUTPUT_DIR = os.path.join(BASE_DIR, "output")
-MODEL_SAVE_PATH = os.path.join(OUTPUT_DIR, "binary_classifier.pth")
+MODEL_SAVE_PATH = os.path.join(OUTPUT_DIR, "binary_classifier-v1.pth")
 
 # 训练超参数
 BATCH_SIZE = 16

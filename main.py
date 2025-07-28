@@ -5,6 +5,7 @@ from src.model import load_model
 from src.train import train_model
 from src.inference import predict_image
 import config  # 直接导入 config 模块
+import torch
 from transformers import AutoProcessor
 import os
 
@@ -27,11 +28,15 @@ def main():
         if not args.image_path:
             raise ValueError("Please provide --image_path for inference")
         # 加载模型
-        model = load_model(config.MODEL_CHECKPOINT, config.DEVICE)
+        model = load_model(config.MODEL_CHECKPOINT, config.DEVICE, config.CACHE_DIR)
         model.load_state_dict(torch.load(config.MODEL_SAVE_PATH))
         # 推理
         label, confidence = predict_image(args.image_path, model, processor, config.DEVICE)
-        print(f"Predicted Label: {label}, Confidence: {confidence:.4f}")
+        print(f"预测标签: {label}, 置信度: {confidence:.4f}")
+        if label.item() == 1:
+            print("预测结果：这张图片包含人类")
+        else:
+            print("预测结果：这张图片不含人类")
 
 if __name__ == "__main__":
     main()
